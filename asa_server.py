@@ -12,6 +12,7 @@ from socketserver import ThreadingMixIn
 from http.server import SimpleHTTPRequestHandler
 import ike_server
 
+import json
 
 class NonBlockingHTTPServer(ThreadingMixIn, HTTPServer):
     pass
@@ -209,11 +210,11 @@ if __name__ == '__main__':
            a DoS and remote code execution vulnerability
         """
         def alert(cls, host, port, payloads):
-            logger.critical({
+            logger.critical(json.dumps({
                 'src': host,
                 'spt': port,
                 'data': payloads,
-            })
+            }))
 
         if verbose:
             logger.setLevel(logging.DEBUG)
