@@ -192,6 +192,7 @@ if __name__ == '__main__':
 
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger()
+    logger.handlers[0].setFormatter(logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s", "%Y-%m-%dT%H:%M:%S"))
     logger.info('info')
 
     @click.command()
